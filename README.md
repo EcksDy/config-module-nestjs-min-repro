@@ -1,0 +1,1 @@
+# config-module-nestjs-min-repro
