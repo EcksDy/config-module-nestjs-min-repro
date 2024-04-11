@@ -1,8 +1,12 @@
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 
+@Injectable()
 export class OptionsFactory implements TypeOrmOptionsFactory {
-  constructor(private configService: ConfigService) {}
+  constructor(private readonly configService: ConfigService) {
+    console.log('this.configService', this.configService);
+  }
 
   async createTypeOrmOptions(): Promise<TypeOrmModuleOptions> {
     const DB_HOST = this.configService.get('DB_HOST');
